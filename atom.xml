@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>AI HPC</title>
   
-  
+  <subtitle>AI HPC in doing we learn!</subtitle>
   <link href="https://openaihpc.cn/atom.xml" rel="self"/>
   
   <link href="https://openaihpc.cn/"/>
