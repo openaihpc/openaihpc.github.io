@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, AI,HPC,GPU,Pytorch,人工智能,流体力学">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="GPUHPLlinpack.md, AI,HPC,GPU,Pytorch,人工智能,流体力学">
+    <meta name="description" content="GPU HPL linpack基础环境1、硬件服务器：CPU、GPU、IB网卡2、操作系统3、GPU驱动，安装nvidia-fabricmanager4、CUDA版本11.45、IB驱动6、安装openmpi
+性能测试上传至文件系统或者GP">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | AI HPC</title>
+    <title>GPUHPLlinpack.md | AI HPC</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -305,12 +306,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">GPUHPLlinpack.md</h1>
                 </div>
             </div>
         </div>
@@ -330,9 +331,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/GPU/">
+                                <span class="chip bg-color">GPU</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -353,14 +358,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -383,19 +388,194 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="GPU-HPL-linpack"><a href="#GPU-HPL-linpack" class="headerlink" title="GPU HPL linpack"></a>GPU HPL linpack</h1><h2 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h2><p>1、硬件服务器：CPU、GPU、IB网卡<br>2、操作系统<br>3、GPU驱动，安装nvidia-fabricmanager<br>4、CUDA版本11.4<br>5、IB驱动<br>6、安装openmpi</p>
+<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><p>上传至文件系统或者GPU节点共享存储目录中<br>执行压测文件<br>[root@g90 ~]# cat startgpulinpack.sh<br>cd &#x2F;home&#x2F;software&#x2F;gpulinpack&#x2F;<br>ls<br>.&#x2F;run_1_5688M7_A800x8  &amp;</p>
+<p>[root@g90 ~]# .&#x2F;startgpulinpack</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@g90 gpulinpack]# cat run_1_5688M7_A800x8
+#!&#x2F;bin&#x2F;bash
+#location of HPL
+HPL_DIR&#x3D;&#96;pwd&#96;
+#加载openmpi
+export PATH&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;bin:$PATH
+export INCLUDE&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;include:$INCLUDE
+export LIBRARY_PATH&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;lib:$LIBRARY_PATH
+export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;lib:$LD_LIBRARY_PATH
+export MANPATH&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;share&#x2F;man:$MANPATH
+#查看mpirun版本
+&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;bin&#x2F;mpirun --allow-run-as-root --version
+#测试结果输出
+TEST_NAME&#x3D;run_1_5688M7_A800x8
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+DATETIME&#x3D;&#96;hostname&#96;.&#96;date +&quot;%m%d.%H%M%S&quot;&#96;
+mkdir .&#x2F;results&#x2F;HPL-$TEST_NAME-results-$DATETIME
+echo &quot;Results in folder .&#x2F;results&#x2F;HPL-$TEST_NAME-results-$DATETIME&quot;
+RESULT_FILE&#x3D;.&#x2F;results&#x2F;HPL-$TEST_NAME-results-$DATETIME&#x2F;HPL-$TEST_NAME-results-$DATETIME-out.txt
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+nvidia-smi -pm 1
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;bin&#x2F;mpirun --allow-run-as-root -np 8 -bind-to none  -x LD_LIBRARY_PATH .&#x2F;run_linpack_5688m7 2&gt;&amp;1 | tee $RESULT_FILE
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+# accumulated result summary
+echo &quot;RESULTS in $RESULT_FILE&quot; &gt;&gt; .&#x2F;results&#x2F;result_summary.txt
+grep &quot;WC\|WR&quot; $RESULT_FILE &gt;&gt; .&#x2F;results&#x2F;result_summary.txt
+grep &quot;WC\|WR&quot; $RESULT_FILE<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>run_1_5688M7_A800x8执行文件run_linpack_5688m7</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@g90 gpulinpack]# cat run_linpack_5688m7
+#!&#x2F;bin&#x2F;bash
+#location of HPL
+HPL_DIR&#x3D;&#96;pwd&#96;
+
+
+EXEC&#x3D;$&#123;1:-xhpl&#125;
+APP&#x3D;&quot;$HPL_DIR&#x2F;$EXEC&quot;
+
+export UCX_MEMTYPE_CACHE&#x3D;n
+export UCX_TLS&#x3D;dc,shm,cma,rc,mm,cuda_copy,cuda_ipc,gdr_copy
+export UCX_RNDV_THRESH&#x3D;16384
+export UCX_RNDV_SCHEME&#x3D;get_zcopy
+
+export PATH&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;bin:$PATH
+export INCLUDE&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;include:$INCLUDE
+export LIBRARY_PATH&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;lib:$LIBRARY_PATH
+export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;lib:$LD_LIBRARY_PATH
+export MANPATH&#x3D;&#x2F;home&#x2F;software&#x2F;openmpi-4.0.5&#x2F;share&#x2F;man:$MANPATH
+
+
+
+export CUDA_DEVICE_MAX_CONNECTIONS&#x3D;16
+export CUDA_COPY_SPLIT_THRESHOLD_MB&#x3D;1
+
+export TRSM_CUTOFF&#x3D;9000000
+export GPU_DGEMM_SPLIT&#x3D;1.00
+
+export MAX_D2H_MS&#x3D;200
+export MAX_H2D_MS&#x3D;200
+
+export SORT_RANKS&#x3D;0
+
+export GRID_STRIPE&#x3D;8
+export RANKS_PER_NODE&#x3D;8
+#export RANKS_PER_SOCKET&#x3D;2
+export RANKS_PER_SOCKET&#x3D;4
+export NUM_PI_BUF&#x3D;6
+export NUM_L2_BUF&#x3D;6
+export NUM_L1_BUF&#x3D;6
+export NUM_WORK_BUF&#x3D;6
+export TEST_SYSTEM_PARAMS&#x3D;1
+export ICHUNK_SIZE&#x3D;768
+export CHUNK_SIZE&#x3D;3456
+#export CHUNK_SIZE&#x3D;6912 # for 64x32
+#export SCHUNK_SIZE&#x3D;224
+#export ICHUNK_SIZE&#x3D;5120
+#export CHUNK_SIZE&#x3D;5120
+#export SCHUNK_SIZE&#x3D;5120
+#export ICHUNK_SIZE&#x3D;1280
+#export CHUNK_SIZE&#x3D;5120
+#export SCHUNK_SIZE&#x3D;2560
+#export OMP_NUM_THREADS&#x3D;7
+#export MKL_DYNAMIC&#x3D;TRUE
+export MKL_NUM_THREADS&#x3D;8
+export OMP_NUM_THREADS&#x3D;8
+#export OMP_NUM_THREADS&#x3D;16
+export OMP_PROC_BIND&#x3D;TRUE
+export OMP_PLACES&#x3D;sockets
+export TEST_LOOPS&#x3D;1
+#export TEST_SYSTEM_PARAMS&#x3D;1
+#export TEST_SYSTEM_PARAMS_COUNT&#x3D;1
+
+export MONITOR_GPU&#x3D;1
+export GPU_TEMP_WARNING&#x3D;78
+export GPU_CLOCK_WARNING&#x3D;1275
+#export GPU_CLOCK_WARNING&#x3D;1320
+export GPU_POWER_WARNING&#x3D;410
+export GPU_PCIE_GEN_WARNING&#x3D;3
+export GPU_PCIE_WIDTH_WARNING&#x3D;2
+
+
+case $&#123;OMPI_COMM_WORLD_LOCAL_RANK&#125; in
+0)
+#sudo nvidia-smi -rac  &gt; &#x2F;dev&#x2F;null
+#sudo nvidia-smi -rgc  &gt; &#x2F;dev&#x2F;null
+#sudo nvidia-smi -lgc 1350,1350
+#sudo nvidia-smi -lgc 1380,1380
+#nvidia-smi -ac  1593,1410
+#sudo nvidia-smi -ac 1215,1335
+#sudo nvidia-smi -lgc 1320,1320
+#sudo nvidia-smi -lgc 1275,1275
+#sudo nvidia-smi -lgc 1410,1410 &gt; &#x2F;dev&#x2F;null
+#sudo nvidia-smi -lgc 1320,1320 &gt; &#x2F;dev&#x2F;null
+#sudo nvidia-smi -lgc 1335,1335 &gt; &#x2F;dev&#x2F;null
+#sudo nvidia-smi -rac
+#sudo nvidia-smi -ac 1215,1380
+export CUDA_VISIBLE_DEVICES&#x3D;0
+export OMPI_MCA_btl_openib_if_include&#x3D;mlx5_0:1
+export UCX_NET_DEVICES&#x3D;mlx5_0:1
+#export UCX_NET_DEVICES&#x3D;ib0
+$PRE_APP numactl --physcpubind&#x3D;0-51 --membind&#x3D;0 $APP
+  ;;
+1)
+nvidia-smi -ac  1593,1410
+export CUDA_VISIBLE_DEVICES&#x3D;1
+export UCX_NET_DEVICES&#x3D;mlx5_1:1
+export OMPI_MCA_btl_openib_if_include&#x3D;mlx5_1:1
+#export UCX_NET_DEVICES&#x3D;ib1
+$PRE_APP numactl --physcpubind&#x3D;0-51 --membind&#x3D;0 $APP
+  ;;
+2)
+nvidia-smi -ac  1593,1410
+export CUDA_VISIBLE_DEVICES&#x3D;2
+export UCX_NET_DEVICES&#x3D;mlx5_2:1
+export OMPI_MCA_btl_openib_if_include&#x3D;mlx5_2:1
+#export UCX_NET_DEVICES&#x3D;ib2
+$PRE_APP numactl --physcpubind&#x3D;0-51 --membind&#x3D;0 $APP
+  ;;
+3)
+nvidia-smi -ac  1593,1410
+export CUDA_VISIBLE_DEVICES&#x3D;3
+export UCX_NET_DEVICES&#x3D;mlx5_3:1
+export OMPI_MCA_btl_openib_if_include&#x3D;mlx5_3:1
+#export UCX_NET_DEVICES&#x3D;ib3
+$PRE_APP numactl --physcpubind&#x3D;0-51  --membind&#x3D;0 $APP
+  ;;
+4)
+nvidia-smi -ac  1593,1410
+export CUDA_VISIBLE_DEVICES&#x3D;4
+export UCX_NET_DEVICES&#x3D;mlx5_4:1
+export OMPI_MCA_btl_openib_if_include&#x3D;mlx5_4:1
+#export UCX_NET_DEVICES&#x3D;ib5
+$PRE_APP numactl --physcpubind&#x3D;52-103 --membind&#x3D;1 $APP
+  ;;
+5)
+nvidia-smi -ac  1593,1410
+export CUDA_VISIBLE_DEVICES&#x3D;5
+export UCX_NET_DEVICES&#x3D;mlx5_6:1
+export OMPI_MCA_btl_openib_if_include&#x3D;mlx5_6:1
+#export UCX_NET_DEVICES&#x3D;ib6
+$PRE_APP numactl --physcpubind&#x3D;52-103 --membind&#x3D;1 $APP
+  ;;
+6)
+nvidia-smi -ac  1593,1410
+export CUDA_VISIBLE_DEVICES&#x3D;6
+export UCX_NET_DEVICES&#x3D;mlx5_7:1
+export OMPI_MCA_btl_openib_if_include&#x3D;mlx5_7:1
+#export UCX_NET_DEVICES&#x3D;ib7
+$PRE_APP numactl --physcpubind&#x3D;52-103 --membind&#x3D;1 $APP
+  ;;
+7)
+nvidia-smi -ac  1593,1410
+export CUDA_VISIBLE_DEVICES&#x3D;7
+export UCX_NET_DEVICES&#x3D;mlx5_8:1
+export OMPI_MCA_btl_openib_if_include&#x3D;mlx5_8:1
+#export UCX_NET_DEVICES&#x3D;ib8
+$PRE_APP numactl --physcpubind&#x3D;52-103 --membind&#x3D;1 $APP
+  ;;
+esac
+[root@g90 gpulinpack]#
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>run_linpack_5688m7执行文件xhpl</p>
+<h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><p><img src="/GPU/1.png" alt="A800 GPU满载"><br><img src="/GPU/2.jpg" alt="36台GPU联合压测"><br><img src="/GPU/3.png" alt="80台GPU联合压测"></p>
+<p>单卡A800理论值FP64 Tensor Core 19.5TFLOPS</p>
+<p>实测80台640张A800联合压测GPU HPL Linpack算力：<br>理论12480 Tflops<br>实测 9351 Tflops<br>这个AI GPU集群实测效率&#x3D;9351&#x2F;80&#x2F;8&#x2F;19.5&#x3D;75%</p>
 
                 
             </div>
@@ -409,7 +589,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/GPU/">
+                                    <span class="chip bg-color">GPU</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -483,9 +667,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2024/12/23/gpuhpllinpack-md/">
                     <div class="card-image">
@@ -503,9 +688,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-12-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -514,6 +699,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -529,7 +715,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2024/12/23/hello-world/">
@@ -559,7 +745,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -599,6 +784,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
