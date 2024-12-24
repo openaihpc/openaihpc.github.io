@@ -6,7 +6,7 @@
   <link href="https://openaihpc.cn/atom.xml" rel="self"/>
   
   <link href="https://openaihpc.cn/"/>
-  <updated>2024-12-24T15:56:55.569Z</updated>
+  <updated>2024-12-24T16:16:52.787Z</updated>
   <id>https://openaihpc.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://openaihpc.cn/2024/12/23/gpuhpllinpack-md/"/>
     <id>https://openaihpc.cn/2024/12/23/gpuhpllinpack-md/</id>
     <published>2024-12-24T02:40:39.000Z</published>
-    <updated>2024-12-24T15:56:55.569Z</updated>
+    <updated>2024-12-24T16:16:52.787Z</updated>
     
     
       
@@ -33,6 +33,8 @@
       
     
     
+    
+    <category term="GPU" scheme="https://openaihpc.cn/categories/GPU/"/>
     
     
     <category term="GPU" scheme="https://openaihpc.cn/tags/GPU/"/>
