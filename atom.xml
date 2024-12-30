@@ -6,7 +6,7 @@
   <link href="https://openaihpc.cn/atom.xml" rel="self"/>
   
   <link href="https://openaihpc.cn/"/>
-  <updated>2024-12-24T16:16:52.787Z</updated>
+  <updated>2024-12-30T07:50:57.376Z</updated>
   <id>https://openaihpc.cn/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>DLILearn.md</title>
+    <link href="https://openaihpc.cn/2024/12/29/dlilearn-md/"/>
+    <id>https://openaihpc.cn/2024/12/29/dlilearn-md/</id>
+    <published>2024-12-29T18:49:32.000Z</published>
+    <updated>2024-12-30T07:50:57.376Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;NVIDIA-DLI：我的AI学习之旅与收获&quot;&gt;&lt;a href=&quot;#NVIDIA-DLI：我的AI学习之旅与收获&quot; class=&quot;headerlink&quot; title=&quot;NVIDIA DLI：我的AI学习之旅与收获&quot;&gt;&lt;/a&gt;NVIDIA</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>GPUHPLlinpack.md</title>
     <link href="https://openaihpc.cn/2024/12/23/gpuhpllinpack-md/"/>
     <id>https://openaihpc.cn/2024/12/23/gpuhpllinpack-md/</id>
     <published>2024-12-24T02:40:39.000Z</published>
-    <updated>2024-12-24T16:16:52.787Z</updated>
+    <updated>2024-12-30T07:50:29.093Z</updated>
     
     
       
