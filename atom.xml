@@ -6,7 +6,7 @@
   <link href="https://openaihpc.cn/atom.xml" rel="self"/>
   
   <link href="https://openaihpc.cn/"/>
-  <updated>2024-12-30T09:27:25.837Z</updated>
+  <updated>2024-12-24T02:04:11.000Z</updated>
   <id>https://openaihpc.cn/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hello World</title>
+    <link href="https://openaihpc.cn/2025/03/28/hello-world/"/>
+    <id>https://openaihpc.cn/2025/03/28/hello-world/</id>
+    <published>2025-03-28T13:22:40.929Z</published>
+    <updated>2024-12-24T02:04:11.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>DLILearn.md</title>
-    <link href="https://openaihpc.cn/2024/12/29/dlilearn-md/"/>
-    <id>https://openaihpc.cn/2024/12/29/dlilearn-md/</id>
+    <link href="https://openaihpc.cn/2024/12/30/dlilearn-md/"/>
+    <id>https://openaihpc.cn/2024/12/30/dlilearn-md/</id>
     <published>2024-12-29T18:49:32.000Z</published>
-    <updated>2024-12-30T09:27:25.837Z</updated>
+    <updated>2024-12-30T09:27:25.000Z</updated>
     
     
       
@@ -39,10 +60,10 @@
   
   <entry>
     <title>GPUHPLlinpack.md</title>
-    <link href="https://openaihpc.cn/2024/12/23/gpuhpllinpack-md/"/>
-    <id>https://openaihpc.cn/2024/12/23/gpuhpllinpack-md/</id>
+    <link href="https://openaihpc.cn/2024/12/24/gpuhpllinpack-md/"/>
+    <id>https://openaihpc.cn/2024/12/24/gpuhpllinpack-md/</id>
     <published>2024-12-24T02:40:39.000Z</published>
-    <updated>2024-12-30T08:34:46.403Z</updated>
+    <updated>2024-12-30T08:34:46.000Z</updated>
     
     
       
@@ -59,27 +80,6 @@
     
     
     <category term="GPU" scheme="https://openaihpc.cn/tags/GPU/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://openaihpc.cn/2024/12/23/hello-world/"/>
-    <id>https://openaihpc.cn/2024/12/23/hello-world/</id>
-    <published>2024-12-24T02:04:11.388Z</published>
-    <updated>2024-12-24T02:04:11.388Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
